@@ -85,6 +85,27 @@ public class CraftIRCListener extends PluginListener {
 				if (bot.optn_send_all_MC_chat.contains("admin")) {
 					bot.sendMessage(bot.irc_admin_channel, msgtosend);
 				}
+				
+			}
+			
+			// admin command
+			if (split[0].equalsIgnoreCase("/craftirc")) {
+				if (split.length < 2) {
+					player.sendMessage("Usage: /craftirc debug");
+					return true;
+				}
+				if (split[1].equalsIgnoreCase("debug")) {
+					if (!CraftIRC.isDebug())	{
+						CraftIRC.setDebug(true);
+						player.sendMessage("Debugging on.");
+					} else {
+						CraftIRC.setDebug(false);
+						player.sendMessage("Debugging off.");
+					}						
+					return true;
+				}
+				player.sendMessage("Unknown CraftIRC command.");
+				return true;
 			}
 		} // endif player.canUseCommand("/irc")
 

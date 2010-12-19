@@ -22,6 +22,7 @@ public class CraftIRC extends Plugin {
 		bot.run();
 
 		etc.getInstance().addCommand("/irc [msg]", "Sends message to " + bot.irc_channel);
+		etc.getInstance().addCommand("/craftirc", "CraftIRC admin command");
 		if (bot.optn_notify_admins_cmd != null) {
 			etc.getInstance().addCommand(bot.optn_notify_admins_cmd + " [msg]",
 					"Sends your message to the admins on IRC");
@@ -32,6 +33,7 @@ public class CraftIRC extends Plugin {
 		log.info(NAME + " Disabled.");
 		bot = Minebot.getInstance();
 		etc.getInstance().removeCommand("/irc [msg]");
+		etc.getInstance().removeCommand("/craftirc");
 		etc.getInstance().removeCommand(bot.optn_notify_admins_cmd + " [msg]");
 		bot.quitServer(NAME + " Unloaded");
 	}
